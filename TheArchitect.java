@@ -1,6 +1,3 @@
-import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
 import javax.swing.*;
 //Your life is the sum of a remainder of an unbalanced equation inherent to the programming
 //of the matrix
@@ -17,7 +14,7 @@ public class TheArchitect extends JFrame
        updatedMatrix[WallXCord][WallYCord]="E";  
    }
 
-    public void playerMove(int xScale, int yScale, String[][] currentMatrix,int totalDimonds)throws StupidAssMove
+    public void playerMove(int xScale, int yScale, String[][] currentMatrix,int totalDimonds)
     {
        int x=0;
        int y=0;
@@ -68,7 +65,7 @@ public class TheArchitect extends JFrame
                 nextLevel(true);//allow the next level to be loaded.
             }
             else
-               throw new StupidAssMove("Ass Hole hit wall!");
+               notificateUser.notificationAlert("Warning", "You Stupid Ass, Ran into something did you?");
                 
             if(collected==totalDimonds)//if we have all the dimonds give the player the exit
             showWall();
@@ -96,14 +93,7 @@ public class TheArchitect extends JFrame
         return updatedMatrix;    
     }
     
-    private class StupidAssMove extends RuntimeException
-    {
-         public StupidAssMove(String event)
-         {
-             JFrame frame = new JFrame("Warning");
-             JOptionPane.showMessageDialog(frame, "You Stupid Ass, Ran into something did you?");
-         }
-    }//end inner class
+
     
 int foundPlayer=0;
 String[][] updatedMatrix;
@@ -112,4 +102,6 @@ int WallYCord;
 int collected=0;
 boolean level;
 int globalTotalDimonds=0;
+
+notificationSystem notificateUser = new notificationSystem();
 }//end class

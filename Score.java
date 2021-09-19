@@ -66,8 +66,7 @@ public class Score extends JDialog implements ActionListener
                      }//end first while loop            
                 }//end try
                 catch(IOException ex) {
-                    JFrame frame = new JFrame("Alert");
-                    JOptionPane.showMessageDialog(frame, "Problem with scores.txt file.  Cant load high Scores");
+                    notificateUser.notificationAlert("Alert", "Problem with scores.txt file.  Cant load high Scores");
                 }//end catch
         pack();
         setVisible (true);
@@ -95,4 +94,6 @@ public class Score extends JDialog implements ActionListener
 
     
 private JLabel mainLabel;
+
+notificationSystem notificateUser = new notificationSystem();
 }//end class

@@ -24,7 +24,7 @@ public class FileLoader
         }//end catch
      }//end load file method
      
-     public void MatrixLoader(String fileTextLine, int lineNum)throws gameFileError
+     public void MatrixLoader(String fileTextLine, int lineNum)
      {
         // exitCount=0;//we must reset our variables to zero for the next level.              
         
@@ -92,7 +92,7 @@ public class FileLoader
              {
                 // playerCount=0;//we must reset our variables to zero for the next level.
                 // exitCount=0;//we must reset our variables to zero for the next level.
-                 throw new gameFileError();
+                 notificateUser.notificationAlert("Alert", "Your maze file ether had more than one player, or more than one exit.");
              }
              else
              GameMatrix[i1][j1]="W";
@@ -134,14 +134,7 @@ public class FileLoader
      return totalDimonds;//return the total number of dimonds in the level
     }
     
-    private class gameFileError extends RuntimeException //if a level is loaded with ether two players or two exits throw this
-    {
-        public gameFileError()
-        {
-            JFrame frame = new JFrame("Alert");
-            JOptionPane.showMessageDialog(frame, "Your maze file ether had more than one player, or more than one exit.");
-         }
-    }//end inner class
+
     
 private int exitXCord=0;
 private int exitYCord=0;;
@@ -149,4 +142,5 @@ private String[][] GameMatrix;
 private int column;
 private int row;
 
+notificationSystem notificateUser = new notificationSystem();
 }//end class

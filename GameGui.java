@@ -232,7 +232,7 @@ public class GameGui extends JFrame implements ActionListener
     }
  
     Action updateCursorAction = new AbstractAction() {
-    public void actionPerformed(ActionEvent e)throws SlowAssPlayer //this inner class generates an exeption if the player takes to long to finish a level 
+    public void actionPerformed(ActionEvent e)
     {
         ix-=1;
         jx+=1;
@@ -252,26 +252,17 @@ public class GameGui extends JFrame implements ActionListener
         setVisible (true);
         timely.stop();
         catFileName-=01;
-    if(catFileName<01)
-        throw new SlowAssPlayer("Slow ass took to long.");
-    else
+    if(catFileName<01){
+        //the game is over, here we must tell our high score method to recond the details.
+        hs.addHighScore(playerName,tk.getMinutes(),tk.getSeconds(),levelNum);
+        notificateUser.notificationAlert("Warning", "You Stupid Ass, Did you eat to much for dinner?  Move Faster!");
+    }else
         loadMatrixGui("newLoad");
     }//end first if
         progressBar.setValue(jx);
         progressBar.setString(timeLeft+":"+ix);
     }//end actionPerformed
 };//end class
-
-    private class SlowAssPlayer extends RuntimeException
-    {
-        public SlowAssPlayer(String event)
-        {
-            //the game is over, here we must tell our high score method to recond the details.
-            hs.addHighScore(playerName,tk.getMinutes(),tk.getSeconds(),levelNum);
-            JFrame frame = new JFrame("Warning");
-            JOptionPane.showMessageDialog(frame, "You Stupid Ass, Did you eat to much for dinner?  Move Faster!");//the entire game has ended.
-        }
-    }//end class
     
 private Score hs;  
 private int catFileName=01;
@@ -303,4 +294,6 @@ private  Timer timely;
 private Time tk;
 private  String playerName;
 private int levelNum=1;
+
+notificationSystem notificateUser = new notificationSystem();
 }//end class    
