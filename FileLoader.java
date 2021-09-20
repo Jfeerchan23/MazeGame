@@ -1,4 +1,6 @@
 import java.io.*;
+
+import javax.management.Notification;
 import javax.swing.*;
 public class FileLoader
 {
@@ -17,8 +19,8 @@ public class FileLoader
          }//end try
         catch (IOException e) 
         {  
-            JFrame frame = new JFrame("Alert");
-            JOptionPane.showMessageDialog(frame, "Ooops IOException error, i did it again!" + e.getMessage());
+            notificationSystem notificateUser = new notificationSystem();
+            notificateUser.notificationAlert("Alert", "Ooops IOException error, i did it again!" + e.getMessage());
         }//end catch
      }//end load file method
      
@@ -135,7 +137,7 @@ public class FileLoader
 
     
 private int exitXCord=0;
-private int exitYCord=0;;
+private int exitYCord=0;
 private String[][] GameMatrix;
 private int column;
 private int row;

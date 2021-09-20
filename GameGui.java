@@ -69,44 +69,32 @@ public class GameGui extends JFrame implements ActionListener
                case KeyEvent.VK_UP:
                {
                  theArc.playerMove(-1,0,scrapMatrix,fl.dimondCount());//let the Architect know we moved, along with the current matrix
-                 loadMatrixGui("updateLoad");//reload the gui to show the move
-                 if (theArc.getLevel()==true)
-                 {
-                    nextLevelLoad();//if the player hit an exit door, load the next level
-                 }
                  break;
               }
               case KeyEvent.VK_DOWN:
               {
                  theArc.playerMove(1,0,scrapMatrix,fl.dimondCount());//see above
                  loadMatrixGui("updateLoad");//see above
-                 if (theArc.getLevel()==true)//see above
-                 {
-                    nextLevelLoad();//see above
-                 }
                  break;
              }
              case KeyEvent.VK_LEFT:
              {
                 theArc.playerMove(0,-1,scrapMatrix,fl.dimondCount());//see above
                 loadMatrixGui("updateLoad");//see above
-                 if (theArc.getLevel()==true)//see above
-                 {
-                     nextLevelLoad();//see above
-                 }
                 break;
              }
              case KeyEvent.VK_RIGHT:
              { 
                 theArc.playerMove(0,1,scrapMatrix,fl.dimondCount()); //see above
                 loadMatrixGui("updateLoad");//see above
-                 if (theArc.getLevel()==true)
-                 {
-                     nextLevelLoad();//see above
-                 }
                 break;   
              }
            }//end switch
+           loadMatrixGui("updateLoad");//reload the gui to show the move
+            if (theArc.getLevel()==true)
+            {
+                nextLevelLoad();//if the player hit an exit door, load the next level
+                }
            JLabel mainLabel=new JLabel("Total Dimonds Left to Collect"+theArc.getDimondsLeft(), JLabel.CENTER);//show how many dimonds are left to collect on the gui!
            JPanel dimondsPanel = new JPanel();
            dimondsPanel.add(mainLabel);
