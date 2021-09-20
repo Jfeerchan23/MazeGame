@@ -90,8 +90,7 @@ public class FileLoader
           }}//end double for loop
              if(playerCount >1 || exitCount>1)
              {
-                // playerCount=0;//we must reset our variables to zero for the next level.
-                // exitCount=0;//we must reset our variables to zero for the next level.
+                notificationSystem notificateUser = new notificationSystem();
                  notificateUser.notificationAlert("Alert", "Your maze file ether had more than one player, or more than one exit.");
              }
              else
@@ -141,6 +140,4 @@ private int exitYCord=0;
 private String[][] GameMatrix;
 private int column;
 private int row;
-
-notificationSystem notificateUser = new notificationSystem();
 }//end class

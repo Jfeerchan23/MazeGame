@@ -74,19 +74,16 @@ public class GameGui extends JFrame implements ActionListener
               case KeyEvent.VK_DOWN:
               {
                  theArc.playerMove(1,0,scrapMatrix,fl.dimondCount());//see above
-                 loadMatrixGui("updateLoad");//see above
                  break;
              }
              case KeyEvent.VK_LEFT:
              {
                 theArc.playerMove(0,-1,scrapMatrix,fl.dimondCount());//see above
-                loadMatrixGui("updateLoad");//see above
                 break;
              }
              case KeyEvent.VK_RIGHT:
              { 
                 theArc.playerMove(0,1,scrapMatrix,fl.dimondCount()); //see above
-                loadMatrixGui("updateLoad");//see above
                 break;   
              }
            }//end switch
@@ -111,7 +108,9 @@ public class GameGui extends JFrame implements ActionListener
         }
         else if (e.getActionCommand().equals("New Game"))//new game on the menu bar
         {
-             return; //maybe implent this feature later
+            fl.loadFile("level1.maz");
+            theArc.setExit(fl.ExitXCord(),fl.ExitYCord());
+            loadMatrixGui("newLoad"); //maybe implent this feature later
         }//end New Game Command
         else if(e.getActionCommand().equals("EnterName"))//Allows user to enter their name for high score
         {
