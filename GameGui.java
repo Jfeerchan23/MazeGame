@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.filechooser.*;
 public class GameGui extends JFrame implements ActionListener
 {
 
@@ -108,7 +107,7 @@ public class GameGui extends JFrame implements ActionListener
                 break;   
              }
            }//end switch
-           JLabel mainLabel=new JLabel("Total Dimonds Left to Collect"+theArc.getDimondsLeft()+"", JLabel.CENTER);//show how many dimonds are left to collect on the gui!
+           JLabel mainLabel=new JLabel("Total Dimonds Left to Collect"+theArc.getDimondsLeft(), JLabel.CENTER);//show how many dimonds are left to collect on the gui!
            JPanel dimondsPanel = new JPanel();
            dimondsPanel.add(mainLabel);
            cp.add(dimondsPanel,BorderLayout.SOUTH);
@@ -194,7 +193,7 @@ public class GameGui extends JFrame implements ActionListener
         }
           for (int i = 0; i < labelMatrix.length; i++){
               for (int j = 0; j < labelMatrix[i].length; j++){
-                  labelMatrix[i][j]=  mo=new mazeObject(scrapMatrix[i][j]);//add our maze images into the gui
+                  labelMatrix[i][j]= new mazeObject(scrapMatrix[i][j]);//add our maze images into the gui
               }}//end double for loop
          cp.add(newPanel);
          remove(shagLabel);//remove the constructors initial background
@@ -206,12 +205,10 @@ public class GameGui extends JFrame implements ActionListener
  
     public class mazeObject extends JLabel//inner class for each maze object, aka wall, player etc
     {
-    private JLabel imageLabel;
-        public mazeObject(String fileName)
+    public mazeObject(String fileName)
         {
             fileName+=".png";
-            JLabel fancyLabel;
-            fancyLabel = new JLabel("",new ImageIcon(fileName),JLabel.LEFT);
+            JLabel fancyLabel= new JLabel("",new ImageIcon(fileName),JLabel.LEFT);
             newPanel.add(fancyLabel);
         }
     }//end inner class
@@ -286,7 +283,6 @@ private JPanel progBarPanel;
 private JLabel[][] labelMatrix;
 private Time timeCalc;
 private  JProgressBar progressBar;
-private mazeObject mo;
 private JPanel newPanel;// = new JPanel();
 private TheArchitect theArc = new TheArchitect();
 private String[][] scrapMatrix; 
