@@ -2,7 +2,7 @@ import java.io.*;
 
 import javax.management.Notification;
 import javax.swing.*;
-public class FileLoader
+public class FileSystem
 {
     public void loadFile(String fileName)
     {  
@@ -133,6 +133,7 @@ public class FileLoader
      return totalDimonds;//return the total number of dimonds in the level
     }
     
+
 
     
 private int exitXCord=0;

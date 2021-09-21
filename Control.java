@@ -2,7 +2,7 @@ import javax.swing.*;
 //Your life is the sum of a remainder of an unbalanced equation inherent to the programming
 //of the matrix
 
-public class TheArchitect extends JFrame
+public class Control extends JFrame
 {
    public void setExit(int x, int y)//records the location of the exit so we can show it when its time
    {
@@ -91,7 +91,8 @@ public class TheArchitect extends JFrame
     }
     
 
-    
+
+
 int foundPlayer=0;
 String[][] updatedMatrix;
 int WallXCord;

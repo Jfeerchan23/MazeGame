@@ -2,10 +2,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
-public class Score extends JDialog implements ActionListener
+public class ScoreSystem extends JDialog implements ActionListener
 {
 
-    public Score()
+    public ScoreSystem()
     {
         super();
     }

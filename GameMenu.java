@@ -1,15 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class GameGui extends JFrame implements ActionListener
+public class GameMenu extends JFrame implements ActionListener
 {
 
     public static void main(String[] args)
     {
-        new GameGui();
+        new GameMenu();
     }
 
-    public GameGui()
+    public GameMenu()
     {
         super("Maze, a game of wondering"); //call super to initilize title bar of G.U.I.
         cp=getContentPane();
@@ -54,8 +54,8 @@ public class GameGui extends JFrame implements ActionListener
         setJMenuBar(menuBar);
         //Add Menu Bar     
         newPanel = new JPanel();
-        hs = new Score();
-        tk=new Time();
+        hs = new ScoreSystem();
+        tk=new TimeSystem();
         pack();
         setVisible (true);//show our menu bar and shagLabel.. Yea baby Yea! Whoa.. to much java.
     }//end constructor
@@ -119,7 +119,7 @@ public class GameGui extends JFrame implements ActionListener
         }
         else if(e.getActionCommand().equals("HighScore"))//Displays the high scores
         {
-            Score sg = new Score();
+            ScoreSystem sg = new ScoreSystem();
             sg.ScoreGui();   
         }
         else if(e.getActionCommand().equals("SaveScore"))//allows the user to save their score at any time.
@@ -148,11 +148,16 @@ public class GameGui extends JFrame implements ActionListener
              remove(progBarPanel);
              String[][] temp = fl.getGameMatrix();
              scrapMatrix = new String[fl.getMatrixSizeRow()][fl.getMatrixSizeColumn()];   
+
+
              for (int i = 0; i < scrapMatrix.length; i++){
                 for (int j = 0; j < scrapMatrix[i].length; j++){
                     scrapMatrix[i][j]= temp[i][j];//create a new matrix so we dont have a refrence to another objects matrix!
               }}//end double for loop
-             timeCalc = new Time();//create the time calculator used to determine how much time each level is given.
+
+
+
+             timeCalc = new TimeSystem();//create the time calculator used to determine how much time each level is given.
              timeCalc.calcTimeforMaze(fl.dimondCount(),fl.getMatrixSizeRow(),fl.getMatrixSizeColumn());//let time calculator know the parameters of the game 
              timeLeft=timeCalc.getMinutes();//get the minutes allowed for the level
              ix=timeCalc.getSeconds();//get the seconds allowed for the level;
@@ -168,6 +173,9 @@ public class GameGui extends JFrame implements ActionListener
              newPanel.setLayout(new GridLayout(fl.getMatrixSizeRow(),fl.getMatrixSizeColumn()));//set our panel for the game to the size of the matrix      
              labelMatrix=new JLabel[fl.getMatrixSizeRow()][fl.getMatrixSizeColumn()];
              newPanel.addKeyListener( new MyKeyHandler() );
+
+
+
         }//end if
         else if(event =="updateLoad")//every time the player moves the gui must be updated.
         {
@@ -182,6 +190,11 @@ public class GameGui extends JFrame implements ActionListener
               for (int j = 0; j < labelMatrix[i].length; j++){
                   labelMatrix[i][j]= new mazeObject(scrapMatrix[i][j]);//add our maze images into the gui
               }}//end double for loop
+
+
+
+
+
          cp.add(newPanel);
          remove(shagLabel);//remove the constructors initial background
          System.gc();//force java to clean up memory use.
@@ -205,7 +218,7 @@ public class GameGui extends JFrame implements ActionListener
         levelNum+=1;
         tk.TimeKeeper(timeLeft,ix);//The TimeKeeper object keeps a running tab of the total time the player has used.(for high score)
         timely.stop();//dont count while we are loading the next level.
-        theArc = new TheArchitect();//flush everything from TheArchitect so we dont get goffee results
+        theArc = new Control();//flush everything from TheArchitect so we dont get goffee results
         catFileName+=01;//the next file to be loaded (number)
         String fileName="level"+catFileName+".maz";
         System.gc();
@@ -215,7 +228,7 @@ public class GameGui extends JFrame implements ActionListener
         loadMatrixGui("newLoad");         
     }
  
-    Action updateCursorAction = new AbstractAction() {
+     Action updateCursorAction = new AbstractAction() {
     public void actionPerformed(ActionEvent e)
     {
         ix-=1;
@@ -248,10 +261,10 @@ public class GameGui extends JFrame implements ActionListener
     }//end actionPerformed
 };//end class
     
-private Score hs;  
+private ScoreSystem hs;  
 private int catFileName=01;
 private Container cp;
-private FileLoader fl = new FileLoader();
+private FileSystem fl = new FileSystem();
 //create menu items
 private JMenuBar menuBar;
 private JMenu newMenu;
@@ -268,13 +281,13 @@ private int jx;
 private int timeLeft;
 private JPanel progBarPanel;
 private JLabel[][] labelMatrix;
-private Time timeCalc;
-private  JProgressBar progressBar;
+private TimeSystem timeCalc;
+private JProgressBar progressBar;
 private JPanel newPanel;// = new JPanel();
-private TheArchitect theArc = new TheArchitect();
+private Control theArc = new Control();
 private String[][] scrapMatrix; 
-private  Timer timely; 
-private Time tk;
+private Timer timely; 
+private TimeSystem tk;
 private  String playerName;
 private int levelNum=1;
 

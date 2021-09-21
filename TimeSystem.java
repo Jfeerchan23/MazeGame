@@ -1,4 +1,4 @@
-public class Time
+public class TimeSystem
 {
     public void TimeKeeper(int min, int sec)//a class to keep track of the total seconds and minuntes the player has used to get to a level
 	{ 
