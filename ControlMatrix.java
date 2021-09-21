@@ -2,7 +2,7 @@ import javax.swing.*;
 //Your life is the sum of a remainder of an unbalanced equation inherent to the programming
 //of the matrix
 
-public class Control extends JFrame
+public class ControlMatrix extends JFrame
 {
    public void setExit(int x, int y)//records the location of the exit so we can show it when its time
    {
