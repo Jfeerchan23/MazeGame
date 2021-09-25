@@ -1,12 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FilenameFilter;
+import javax.swing.filechooser.*;
 public class GameMenu extends JFrame implements ActionListener
 {
 
     public static void main(String[] args)
     {
-        new GameMenu();
+        GameMenu game = new GameMenu();
+        game.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public GameMenu()
@@ -128,7 +131,9 @@ public class GameMenu extends JFrame implements ActionListener
         }
         else if(e.getActionCommand().equals("Open"))//to start the game you have to open a maze file. this is on the menu
         {
-            JFileChooser chooser = new JFileChooser();
+            JFileChooser chooser = new JFileChooser(".");
+            FileNameExtensionFilter mapFilter = new FileNameExtensionFilter("Maze Map", "maz");
+            chooser.setFileFilter(mapFilter);
             int returnVal = chooser.showOpenDialog(this);
             if(returnVal == JFileChooser.APPROVE_OPTION) 
             {

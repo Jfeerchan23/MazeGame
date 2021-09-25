@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: Alexis Ake y Fernando Chan
+Main-Class: GameMenu
+X-COMMENT: Curso de arquitectura de software
+
